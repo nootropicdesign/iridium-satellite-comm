@@ -15,6 +15,9 @@
 #define LED_BLUE_PIN 6
 #define LED_GREEN_PIN 7
 #define SerialMon SerialUSB
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+
 
 void log(const char *s, boolean newline=true);
 void log(int n, boolean newline=true);
@@ -41,7 +44,7 @@ void SERCOM1_Handler() {
 // pads 1, 0 on SERCOM_ALT (SERCOM2)
 Uart Serial3 (&sercom2, 3, 4, SERCOM_RX_PAD_1, UART_TX_PAD_0);
 Adafruit_GPS GPS(&Serial3);
-Adafruit_SSD1306 display(-1);
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 static const unsigned char nootropicdesign_logo [] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00,
